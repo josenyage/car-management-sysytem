@@ -29,4 +29,11 @@ public class EmployeeService {
     public void delete(int id){
         employeeRepository.deleteById(id);
     }
+    public List<Employee> findByKeyword(String keyword) {
+        return employeeRepository.findByKeyword();
+    }
+
+    public EmployeeRepository findByUsername(String un) {
+        return employeeRepository;
+    }
 }
