@@ -30,7 +30,7 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
     public List<Employee> findByKeyword(String keyword) {
-        return employeeRepository.findByKeyword();
+        return employeeRepository.findByKeyword(keyword);
     }
 
     public EmployeeRepository findByUsername(String un) {
