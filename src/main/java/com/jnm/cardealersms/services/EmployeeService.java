@@ -33,7 +33,7 @@ public class EmployeeService {
         return employeeRepository.findByKeyword(keyword);
     }
 
-    public EmployeeRepository findByUsername(String un) {
-        return employeeRepository;
+    public Employee findByUsername(String un) {
+        return employeeRepository.findByUsername(un);
     }
 }

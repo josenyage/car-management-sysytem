@@ -11,8 +11,9 @@ import java.util.List;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-    @Query(value = "select * from Employee e where e.firstname like %:keyword% or e.lastname like %:keyword%")
-    List<Employee> findByKeyword(@Param("keyword") String keyword);
+    /*@Query(value = "select * from Employee e where e.firstname like %:keyword% or e.lastname like %:keyword%")*/
+    public Employee findByUsername(String un);
 
-    Employee findByUsername(String un);
+    @Query(value="select * from Employee e where e.firstname like %:keyword% or e.lastname like %:keyword%", nativeQuery=true)
+    List<Employee> findByKeyword(@Param("keyword") String keyword);
 }
