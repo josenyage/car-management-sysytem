@@ -40,6 +40,7 @@ $('document').ready(function() {
 		var href= $(this).attr('href');
 		$.get(href, function(employee, status){
 			$('#idDetails').val(employee.id);
+			$('#txtUsernameEdit').val(employee.username);
 			$('#descriptionDetails').val(employee.description);
 			$('#detailsDetails').val(employee.details);
 			$('#lastModifiedByDetails').val(employee.lastModifiedBy);
