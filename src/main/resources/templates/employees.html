@@ -433,7 +433,9 @@
                               <th><i class="icon_mail_alt"></i> Email</th>
                               <th><i class="icon_pin_alt"></i> City</th>
                               <th><i class="icon_mobile"></i> Phone</th>
+                              <th><i class="icon_cogs"></i> Username</th>
                               <th><i class="icon_cogs"></i> Action</th>
+
                           </tr>
                           <tr th:each="employee:${employees}">
                               <td>
@@ -446,6 +448,7 @@
                               <td th:text="${employee.email}">Email</td>
                               <td th:text="${employee.city}">City</td>
                               <td th:text="${employee.phone}">Phone</td>
+                              <td><a th:text="${employee.username} ?: 'Check'" th:href="@{/employees/assignUsername/(id=${employee.id})}"></a></td>
                               <td>
                                   <div class="btn-group">
                                       <a class="btn btn-primary" id="editButton" th:href="@{/employees/findById/(id=${employee.id})}"><i class="icon_pencil-edit"></i></a>
@@ -696,6 +699,7 @@
                                                   <option>-SELECT-</option>
                                                   <option value="Mr.">Mr.</option>
                                                   <option value="Ms.">Ms.</option>
+                                                  <option value="Mrs.">Mrs.</option>
                                               </select>
                                           </div>
                                       </div>
@@ -709,6 +713,11 @@
                                           <label for="txtSSNEdit" class="col-sm-4 col-form-label">Social Security No.: </label>
                                           <div class="col-sm-6">
                                               <input type="text" class="form-control" id="txtSSNEdit" name="socialSecurityNumber" placeholder="Social Security Number">
+                                          </div>
+                                      </div> <div class="form-group row">
+                                          <label for="txtUsernameEdit" class="col-sm-4 col-form-label">Username: </label>
+                                          <div class="col-sm-6">
+                                              <input type="hidden" id="txtUsernameEdit" name="username">
                                           </div>
                                       </div>
                                       <div class="form-group row">
