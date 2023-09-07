@@ -1,7 +1,6 @@
 package com.jnm.cardealersms.controller;
 
 import com.jnm.cardealersms.model.Employee;
-import com.jnm.cardealersms.model.EmployeeType;
 import com.jnm.cardealersms.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,6 +60,13 @@ public class EmployeeController {
 
     public String delete(Integer id){
         employeeService.delete(id);
+        return "redirect:/employees";
+    }
+
+    //Assign Employee Username
+    @RequestMapping(value = "/employees/assignUsername")
+    public  String assignUsername(int id){
+        employeeService.assignUsername(id);
         return "redirect:/employees";
     }
 }

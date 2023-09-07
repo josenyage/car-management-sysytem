@@ -1,7 +1,9 @@
 package com.jnm.cardealersms.services;
 
 import com.jnm.cardealersms.model.Employee;
+import com.jnm.cardealersms.model.User;
 import com.jnm.cardealersms.repository.EmployeeRepository;
+import com.jnm.cardealersms.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,9 @@ import java.util.Optional;
 @Service
 public class EmployeeService {
     @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
     public List<Employee> getEmployee() {
@@ -35,5 +39,15 @@ public class EmployeeService {
 
     public Employee findByUsername(String un) {
         return employeeRepository.findByUsername(un);
+    }
+
+    //Set the Username of the employee where firstname and lastname match
+    public void assignUsername(int id){
+        Employee employee = employeeRepository.findById(id).orElse(null);
+        User user = userRepository.findByFirstnameAndLastname(
+                employee.getFirstname(),
+                employee.getLastname());
+        employee.setUsername(user.getUsername());
+        employeeRepository.save(employee);
     }
 }
